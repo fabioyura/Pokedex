@@ -6,7 +6,8 @@ import 'package:pokedex/Models/pokemon.dart';
 import 'package:dio/dio.dart';
 
 abstract class InterfacePokemonRepository {
-  Future<List<Pokemon>> getAllPokemons();
+  Future<List<Pokemon>>
+      getAllPokemons(); //Método que será invocado dentro do HomeContainer
 }
 ///////////////////////////////////////////////////////////////////////
 
@@ -14,7 +15,7 @@ class PokemonRepository implements InterfacePokemonRepository {
   final Dio dio;
 
   PokemonRepository({required this.dio});
-//Aqui é onde começa o método Future
+  //Aqui é onde começa o método Future
 
   @override
   Future<List<Pokemon>> getAllPokemons() async {

@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:pokedex/Commons/Repositories/pokemon_repository.dart';
-import 'package:pokedex/Pages/home_container.dart';
+import 'package:pokedex/Components/Route/pokedex_rout.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,7 +10,6 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -18,7 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.red,
       ),
-      home: HomeContainer(
+      home: PokedexRoute(
         repository: PokemonRepository(
           dio: Dio(),
         ),
