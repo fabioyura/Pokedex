@@ -2,8 +2,8 @@ import 'dart:convert';
 
 import 'package:pokedex/API/api_consts.dart';
 import 'package:pokedex/Commons/Error/failure.dart';
-import 'package:pokedex/Models/pokemon.dart';
 import 'package:dio/dio.dart';
+import 'package:pokedex/Components/Models/pokemon.dart';
 
 abstract class InterfacePokemonRepository {
   Future<List<Pokemon>>

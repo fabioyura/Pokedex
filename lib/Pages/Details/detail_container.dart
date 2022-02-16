@@ -1,35 +1,40 @@
-//Método Future
 import 'package:flutter/material.dart';
 import 'package:pokedex/Commons/Error/failure.dart';
+import '../../Components/Widgets/error_widget.dart';
 import 'package:pokedex/Commons/Repositories/pokemon_repository.dart';
-import 'package:pokedex/Models/pokemon.dart';
-import 'Home/home_loading.dart';
-import 'Home/home_page.dart';
-import 'home_error.dart';
+import 'package:pokedex/Components/Widgets/loading_widget.dart';
+import 'package:pokedex/Pages/Details/detail_page.dart';
+import '../../Components/Models/pokemon.dart';
 
-class HomeContainer extends StatelessWidget {
+class DetailArguments {
+  DetailArguments({required this.name});
+  final String name;
+}
+
+class DetailContainer extends StatelessWidget {
+  const DetailContainer(
+      {Key? key, required this.arguments, required this.repository})
+      : super(key: key);
   final InterfacePokemonRepository repository;
-
-  const HomeContainer({Key? key, required this.repository}) : super(key: key);
+  final DetailArguments arguments;
 
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<List<Pokemon>>(
       future: repository.getAllPokemons(),
-      //Contrutor
       builder: (context, snapshot) {
         // ignore: unrelated_type_equality_checks
         if (snapshot.connectionState.index == ConnectionState.waiting) {
-          return const HomeLoading();
+          return const LoadingWidget();
         }
         //Se conseguir se conectar, então há data. Logo, ele retorna a HomePage()
         if (snapshot.connectionState == ConnectionState.done &&
             snapshot.hasData) {
-          return HomePage(list: snapshot.data!);
+          return DetailPage(name: arguments.name);
         }
         //Se por algum motivo não conseguir se conectar, irá retornar Erro
         if (snapshot.hasError) {
-          return HomeError(
+          return Error(
             error: (snapshot.error as Failure).message!,
           );
         }
