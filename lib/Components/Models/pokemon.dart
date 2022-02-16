@@ -5,6 +5,7 @@ class Pokemon {
   final String img;
   final List<String> type;
 
+  //Em um construtor nomeado padrão ele lê os dados mas não precisa retornar nenhum valor. Por isso então, usaremos o construtor do tipo Factory, para retornar a classe Pokemon
   factory Pokemon.fromMap(Map<String, dynamic> json) {
     return Pokemon(
       id: json['id'],

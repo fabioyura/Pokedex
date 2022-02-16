@@ -30,7 +30,7 @@ class DetailContainer extends StatelessWidget {
         //Se conseguir se conectar, então há data. Logo, ele retorna a HomePage()
         if (snapshot.connectionState == ConnectionState.done &&
             snapshot.hasData) {
-          return DetailPage(name: arguments.name);
+          return DetailPage(name: arguments.name, list: snapshot.data!);
         }
         //Se por algum motivo não conseguir se conectar, irá retornar Erro
         if (snapshot.hasError) {

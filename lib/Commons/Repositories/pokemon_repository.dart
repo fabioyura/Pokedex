@@ -9,7 +9,6 @@ abstract class InterfacePokemonRepository {
   Future<List<Pokemon>>
       getAllPokemons(); //Método que será invocado dentro do HomeContainer
 }
-///////////////////////////////////////////////////////////////////////
 
 class PokemonRepository implements InterfacePokemonRepository {
   final Dio dio;
@@ -28,6 +27,7 @@ class PokemonRepository implements InterfacePokemonRepository {
           as Map<String, dynamic>; //O jsonDecode converte para um MAP<>
       final list = json['pokemon']
           as List<dynamic>; //Classe json 'Pokemon' importada da API
+
       return list.map((e) => Pokemon.fromMap(e)).toList();
     } catch (e) {
       throw Failure('Não foi possível carregar os dados');
