@@ -8,7 +8,10 @@ class HomeError extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Text(error),
+        child: Text(
+          error,
+          style: const TextStyle(),
+        ),
       ),
     );
   }
